@@ -19,10 +19,10 @@ const Popup = ({ toggle, inst }) => {
   const handleSubmitDefinition = (e) => {
     e.preventDefault();
     inst.post('/glossary', {
-      'id': null,
       'term': term,
       'definition': definition
     })
+    id++;
     console.log(definition);
     console.log(term);
 

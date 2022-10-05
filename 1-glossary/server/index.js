@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
+const addOrUpdateDB = require('./db');
 
 const app = express();
 
@@ -9,7 +10,8 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
 
 app.post('/glossary', (req, res) => {
-  console.log(req.body);
+  var definition = req.body;
+  addOrUpdateDB.addOrUpdateDB(definition);
 })
 /****
  *
