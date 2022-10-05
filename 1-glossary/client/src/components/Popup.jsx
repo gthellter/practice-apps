@@ -1,7 +1,7 @@
 import react, {useState, useEffect} from 'react';
 
 
-const Popup = ({ toggle, inst }) => {
+const Popup = ({ toggle, inst, setDefinitions }) => {
 
   //Show Term and Definition as user is typing
   const [term, setTerm] = useState('');
@@ -21,11 +21,9 @@ const Popup = ({ toggle, inst }) => {
     inst.post('/glossary', {
       'term': term,
       'definition': definition
+    }).then(res => {
+      setDefinitions(res.data);
     })
-    id++;
-    console.log(definition);
-    console.log(term);
-
   };
 
   const handleClose = (e) => {
