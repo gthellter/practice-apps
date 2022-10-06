@@ -12,7 +12,7 @@ const Definition = ({definition, inst, setDefinitions}) => {
 
   return (
       <div className='term'>
-        <h3>{definition.term}</h3>
+        { !editable ? <h3>{definition.term}</h3> : null }
         { !editable ? <p onClick={onClickHandler} >{definition.definition}</p> : null }
       { editable ? <DefinitionEdit setDefinitions={setDefinitions} definition={definition} changeEditable={changeEditable} inst={inst}/> : null}
       </div>

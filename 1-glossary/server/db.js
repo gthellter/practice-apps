@@ -27,11 +27,13 @@ const addOrUpdateDB = (def) => {
 
 //deletes document
 const deleteDoc = (def) => {
+  console.log(def);
   return model.deleteOne({ 'term': def.term });
 }
 
-const getUpdated = () => {
-  return model.find().exec();
+const getUpdated = (term = '') => {
+  const filter = {'term': {"$regex": term, "$options": "i" } };
+  return model.find(filter).exec();
 }
 
 module.exports = {

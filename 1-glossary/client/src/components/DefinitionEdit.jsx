@@ -19,7 +19,8 @@ const DefinitionEdit = ({changeEditable, definition, setDefinitions, inst}) => {
     }
   }
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e
+    ) => {
     e.preventDefault();
     setDefValue(e.target.value);
   }
@@ -30,7 +31,10 @@ const DefinitionEdit = ({changeEditable, definition, setDefinitions, inst}) => {
 
   const deleteHandler = (e) => {
     e.preventDefault();
-    inst.delete('/glossary').then(results => {
+    inst.post('/delete', {
+      'term': definition.term,
+      'definition': definition.definition
+    }).then(results => {
       setDefinitions(results.data);
       changeEditable();
     }).catch(err => console.log('Error deleting: ', err))
@@ -38,8 +42,8 @@ const DefinitionEdit = ({changeEditable, definition, setDefinitions, inst}) => {
 
   return (
     <div>
-      <form>
         <button className="deleteButton" onClick={deleteHandler}>Delete {definition.term} ?</button>
+      <form>
         <textarea value={defValue} className="editDefinition" onChange={onChangeHandler} ></textarea>
         <div className="editButtons">
           <button className="cancelButton" onClick={cancelHandler}>Cancel</button>

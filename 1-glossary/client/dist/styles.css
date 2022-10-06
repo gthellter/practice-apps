@@ -1,10 +1,10 @@
 /**
- * 
+ *
  * Based on Josh Comeau's CSS Reset: https://www.joshwcomeau.com/css/custom-css-reset/.
- * 
+ *
  * Feel free to edit this file as needed.
- * 
- */ 
+ *
+ */
 
 *,
 *::before,
@@ -57,4 +57,37 @@ main {
   max-width: 840px;
   padding: 16px;
   margin: auto;
+}
+.mainApp {
+  display: flex;
+  flex-direction: column;
+}
+.body {
+  display: flex;
+  flex-direction: row;
+}
+.search_new {
+  display: flex;
+  flex-direction: column;
+  box-sizing: content-box;
+  width: 30%;
+  padding: 10px;
+}
+.newDefinition {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-center;
+  text-align: center;
+  box-sizing: content-box;
+  width: 20%;
+}
+.defTitle {
+  white-space: nowrap;
+  text-align: center;
+}
+
+.deleteButton {
+  background-color: rgb(111, 28, 28);
+  color: white;
+  border-radius: 5px;
 }

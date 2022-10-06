@@ -33,8 +33,7 @@ const Popup = ({ toggle, inst, setDefinitions }) => {
 
   return (
     <div className='newDefinition' >
-      <h2>Please enter new definition</h2>
-      <form onSubmit={handleSubmitDefinition}>
+      <form className="newForm" onSubmit={handleSubmitDefinition}>
         <label>
           Term:
         <input value={term} onChange={handleTermChange} />
