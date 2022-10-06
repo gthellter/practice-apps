@@ -15,7 +15,7 @@ const DefinitionEdit = ({changeEditable, definition, setDefinitions, inst}) => {
       }).then(results => {
         setDefinitions(results.data);
         changeEditable();
-      }).catch(err => console.log(err));
+      }).catch(err => console.log('Error posting edit: ',err));
     }
   }
 
@@ -28,9 +28,18 @@ const DefinitionEdit = ({changeEditable, definition, setDefinitions, inst}) => {
     changeEditable();
   }
 
+  const deleteHandler = (e) => {
+    e.preventDefault();
+    inst.delete('/glossary').then(results => {
+      setDefinitions(results.data);
+      changeEditable();
+    }).catch(err => console.log('Error deleting: ', err))
+  }
+
   return (
     <div>
       <form>
+        <button className="deleteButton" onClick={deleteHandler}>Delete {definition.term} ?</button>
         <textarea value={defValue} className="editDefinition" onChange={onChangeHandler} ></textarea>
         <div className="editButtons">
           <button className="cancelButton" onClick={cancelHandler}>Cancel</button>
