@@ -7,7 +7,8 @@ module.exports = (req, res, next) => {
    *
    */
 
-  let cookieString = req.get("Cookie") || "";
+  let cookieString = req.
+  get("Cookie") || "";
 
   parsedCookies = cookieString.split("; ").reduce((cookies, cookie) => {
     if (cookie.length) {

@@ -3,6 +3,7 @@ import react, {useState, useEffect} from 'react';
 const Search = ({setDefinitions, definitions, inst}) => {
 
   const [searchText, setSearchText] = useState('');
+  const [searchPage, setSearchPage] = useState(0);
 
 
 
@@ -11,6 +12,7 @@ const Search = ({setDefinitions, definitions, inst}) => {
       inst.get('/glossary').then(results => {
         setDefinitions(results.data);
       }).catch(err => console.log('Error geting all results from search: ', err))
+      return;
     }
     e.preventDefault();
     setSearchText(e.target.value);
